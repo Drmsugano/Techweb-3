@@ -1,6 +1,7 @@
 <?php
     require __DIR__."/app/interfaces/interfacesFigura.php";
-    require __DIR__."\app\model\Triangulo.php";
+    require __DIR__."/app/model/Desenhador.php";
+    require __DIR__."/app/controller/backend.php";
     $request = $_SERVER["REQUEST_URI"];
     switch ($request) {
         case '/':
