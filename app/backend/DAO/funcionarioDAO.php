@@ -7,19 +7,45 @@ class FuncionarioDAO extends DAO
         try {
             $pdo = Conexao::getConexao();
             $pdo_sql = $pdo->prepare("INSERT INTO funcionario (nome,email,senha) VALUES (:nome,:email,:senha)");
-            $pdo_sql->bindParam(":nome", $funcionario->nome);
-            $pdo_sql->bindParam(":email", $funcionario->email);
-            $pdo_sql->bindParam(":senha", $funcionario->senha);
-            echo '<script>
-                        alert ("Funcionario " + ' . $funcionario->nome . ' + " foi Cadastrado")
+            $pdo_sql->bindValue(":nome", $funcionario->nome);
+            $pdo_sql->bindValue(":email", $funcionario->email);
+            $pdo_sql->bindValue(":senha", $funcionario->senha);
+            if ($pdo_sql->execute() === true) {
+                echo '<script>
+                alert ("Funcionario " + ' . $funcionario->nome . ' + " foi Cadastrado")
                 </script>';
+                header('location: /');
+            } else {
+                echo '<script>
+                alert ("Falhou em Cadastrar")
+                </script>';
+            }
+
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
     public function read($id)
     {
+        try {
+            $conexao = Conexao::getConexao();
+            if ($conexao === null) {
+                throw new Exception("Não foi possível estabelecer uma conexão com o banco de dados.");
+            }
 
+            $sql = "SELECT * FROM funcionario WHERE id = :id";
+            $result = $conexao->prepare($sql);
+            $result->bindParam(":id", $id);
+            $result->execute();
+            $lista = $result->fetchAll(PDO::FETCH_BOTH);
+            $funcionarioList = array();
+            foreach ($lista as $l) {
+                $funcionarioList[] = $this->listaFuncionario($l);
+            }
+            return $funcionarioList;
+        } catch (Exception $e) {
+            echo '<script>alert("' . $e->getMessage() . '")</script>';
+        }
     }
     public function read_all()
     {
@@ -49,12 +75,24 @@ class FuncionarioDAO extends DAO
     }
     public function delete($id)
     {
-
+        try {
+            $conexao = Conexao::getConexao();
+            if ($conexao === null) {
+                throw new Exception("Não foi possível estabelecer uma conexão com o banco de dados.");
+            }
+            $sql = "DELETE FROM funcionario WHERE id = :id";
+            $result = $conexao->prepare($sql);
+            $result->bindParam(":id",$id);
+            $result->execute();
+        header("location: /");
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
     }
     public function listaFuncionario($row)
     {
         $funcionario = new Funcionario();
-        $funcionario->id = $row["ID"];
+        $funcionario->id = $row["id"];
         $funcionario->nome = $row["nome"];
         $funcionario->email = $row["email"];
         $funcionario->senha = $row["senha"];

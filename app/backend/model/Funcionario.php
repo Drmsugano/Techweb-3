@@ -26,4 +26,16 @@ class Funcionario {
         $funcionarioDAO = new FuncionarioDAO();
         return $funcionarioDAO->read_all();
     }
+    public function listar(){
+        $funcionario = new Funcionario();
+        $funcionarioDAO = new FuncionarioDAO();
+        $funcionario->id = $_POST["id"];
+        $funcionarioDAO->read($funcionario);
+    }
+    public function deletar(){
+        $funcionarioDAO = new FuncionarioDAO();
+        $funcionario = new Funcionario();
+        $funcionario->id = $_GET["deletar"];
+        return $funcionarioDAO->delete($funcionario);
+    }
 }
