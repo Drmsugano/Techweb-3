@@ -26,16 +26,25 @@ class Funcionario {
         $funcionarioDAO = new FuncionarioDAO();
         return $funcionarioDAO->read_all();
     }
-    public function listar(){
+    public function listar($id){
         $funcionario = new Funcionario();
         $funcionarioDAO = new FuncionarioDAO();
-        $funcionario->id = $_POST["id"];
-        $funcionarioDAO->read($funcionario);
+        $funcionario->id = $id;
+        return $funcionarioDAO->read($funcionario);
     }
     public function deletar(){
         $funcionarioDAO = new FuncionarioDAO();
         $funcionario = new Funcionario();
-        $funcionario->id = $_GET["deletar"];
-        return $funcionarioDAO->delete($funcionario);
+        $funcionario->id = $_REQUEST["del"];
+        $funcionarioDAO->delete($funcionario);
     }
+    public function alterar(){
+        $funcionario = new Funcionario();
+        $funcionarioDAO = new FuncionarioDAO();
+        $funcionario->id = $_REQUEST["id"];
+        $funcionario->nome = $_REQUEST["nome"];
+        $funcionario->email = $_REQUEST["email"];
+        $funcionario->senha = $_REQUEST["senha"];
+        $funcionarioDAO->update($funcionario);
+    }   
 }

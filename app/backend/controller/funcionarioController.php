@@ -9,12 +9,16 @@ class FuncionarioController extends Funcionario{
         $funcionario = new Funcionario();
         return $funcionario->listarAll();
     }
-    public function listar(){
+    public function listar($id){
         $funcionario = new Funcionario();
-        return $funcionario->listar();
+        return $funcionario->listar($id);
     }
     public function deletar(){
         $funcionario = new Funcionario();
         $funcionario->deletar();
+    }
+    public function alterar(){
+        $funcionario = new Funcionario();
+        $funcionario->alterar();
     }
 }

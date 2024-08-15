@@ -10,7 +10,10 @@ $funcionarioController=new FuncionarioController(); ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($funcionarioController->listarAll() as $funcionario) { ?>
+            <?php foreach ($funcionarioController->listarAll() as $funcionario): 
+                include "modal.php";
+                ?>
+
                 <tr>
                     <th scope="row">
                         <?= $funcionario->id ?>
@@ -22,10 +25,10 @@ $funcionarioController=new FuncionarioController(); ?>
                         <?= $funcionario->email ?>
                     </td>
                     <td>
-                        <button class="btn btn-warning text-white" onclick="alterarFuncionario()">Editar</button>
-                        <a class="btn btn-danger" href='?deletar=<?= $funcionario->id ?>' class='m-1 btn btn-danger' onclick="return confirm ('Confirma a Exclusão')">Excluir</a>
+                        <i class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#funcionarioModal<?= $funcionario->id ?>">Editar</i>
+                        <a class="btn btn-danger" href='?del=<?= $funcionario->id ?>' class='m-1 btn btn-danger' onclick="return confirm ('Confirma a Exclusão')">Excluir</a>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
     </table>

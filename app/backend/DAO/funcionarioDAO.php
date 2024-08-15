@@ -11,10 +11,7 @@ class FuncionarioDAO extends DAO
             $pdo_sql->bindValue(":email", $funcionario->email);
             $pdo_sql->bindValue(":senha", $funcionario->senha);
             if ($pdo_sql->execute() === true) {
-                echo '<script>
-                alert ("Funcionario " + ' . $funcionario->nome . ' + " foi Cadastrado")
-                </script>';
-                header('location: /');
+                header('location: /cadastroUser');
             } else {
                 echo '<script>
                 alert ("Falhou em Cadastrar")
@@ -25,7 +22,7 @@ class FuncionarioDAO extends DAO
             echo $e->getMessage();
         }
     }
-    public function read($id)
+    public function read($funcionario)
     {
         try {
             $conexao = Conexao::getConexao();
@@ -35,14 +32,14 @@ class FuncionarioDAO extends DAO
 
             $sql = "SELECT * FROM funcionario WHERE id = :id";
             $result = $conexao->prepare($sql);
-            $result->bindParam(":id", $id);
+            $result->bindValue(":id", $funcionario->id, PDO::PARAM_INT);
             $result->execute();
             $lista = $result->fetchAll(PDO::FETCH_BOTH);
-            $funcionarioList = array();
+            $funcionarioForm = array();
             foreach ($lista as $l) {
-                $funcionarioList[] = $this->listaFuncionario($l);
+                $funcionarioForm[] = $this->listaFuncionario($l);
             }
-            return $funcionarioList;
+            return $funcionarioForm;
         } catch (Exception $e) {
             echo '<script>alert("' . $e->getMessage() . '")</script>';
         }
@@ -69,11 +66,28 @@ class FuncionarioDAO extends DAO
 
         }
     }
-    public function update($object)
+    public function update($funcionario)
     {
+        try {
+            $pdo = Conexao::getConexao();
+            $pdo_sql = $pdo->prepare("UPDATE funcionario SET nome = :nome, email = :email , senha = :senha WHERE id = :id");
+            $pdo_sql->bindValue(":nome", $funcionario->nome);
+            $pdo_sql->bindValue(":email", $funcionario->email);
+            $pdo_sql->bindValue(":senha", $funcionario->senha);
+            $pdo_sql->bindValue(":id", $funcionario->id, PDO::PARAM_INT);
+            if ($pdo_sql->execute() === true) {
+                header('location: /cadastroUser');
+            } else {
+                echo '<script>
+                alert ("Falhou em Cadastrar")
+                </script>';
+            }
 
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
-    public function delete($id)
+    public function delete($funcionario)
     {
         try {
             $conexao = Conexao::getConexao();
@@ -82,9 +96,10 @@ class FuncionarioDAO extends DAO
             }
             $sql = "DELETE FROM funcionario WHERE id = :id";
             $result = $conexao->prepare($sql);
-            $result->bindParam(":id",$id);
+            $result->bindParam(":id",$funcionario->id, PDO::PARAM_INT);
             $result->execute();
-        header("location: /");
+            header("location: /cadastroUser");
+            exit;
         } catch (PDOException $e) {
             $e->getMessage();
         }
