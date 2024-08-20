@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/cadastroUser">Cadastro de Usuario</a>
-</body>
+    <a href="/cadastroFuncionario">Cadastro de Funcionario</a>
+    <a href="/cadastroFornecedor">Cadastro de Fornecedor</a>
+    </body>
 </html>

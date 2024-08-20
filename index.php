@@ -4,10 +4,13 @@ require_once "app/backend/controller/controller.php";
 $request = $_SERVER["REQUEST_URI"];
 switch ($request) {
     case '/':
-        include_once "app/view/inicio.php";
-        break;
-    case "/cadastroUser":
         include_once "app/view/cadastroPessoa.php";
+        break;
+    case "/cadastroFuncionario":
+        include_once "app/view/cadastroPessoa.php";
+        break;
+    case "/cadastroFornecedor":
+        include_once "app/view/cadastroFornecedor.php";
         break;
     default:
         http_response_code(404);

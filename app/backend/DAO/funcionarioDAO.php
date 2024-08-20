@@ -11,7 +11,7 @@ class FuncionarioDAO extends DAO
             $pdo_sql->bindValue(":email", $funcionario->email);
             $pdo_sql->bindValue(":senha", $funcionario->senha);
             if ($pdo_sql->execute() === true) {
-                header('location: /cadastroUser');
+                header('location: /cadastroFuncionario');
             } else {
                 echo '<script>
                 alert ("Falhou em Cadastrar")
@@ -76,7 +76,7 @@ class FuncionarioDAO extends DAO
             $pdo_sql->bindValue(":senha", $funcionario->senha);
             $pdo_sql->bindValue(":id", $funcionario->id, PDO::PARAM_INT);
             if ($pdo_sql->execute() === true) {
-                header('location: /cadastroUser');
+                header('location: /cadastroFuncionario');
             } else {
                 echo '<script>
                 alert ("Falhou em Cadastrar")
@@ -98,7 +98,7 @@ class FuncionarioDAO extends DAO
             $result = $conexao->prepare($sql);
             $result->bindParam(":id",$funcionario->id, PDO::PARAM_INT);
             $result->execute();
-            header("location: /cadastroUser");
+            header("location: /cadastroFuncionario");
             exit;
         } catch (PDOException $e) {
             $e->getMessage();
