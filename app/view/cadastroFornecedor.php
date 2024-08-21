@@ -52,7 +52,7 @@
                     <div class="col">
                         <label class="fs-5 fw-bold mp-3" for="telefone">CEP do Fornecedor</label>
                         <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="CEP do Fornecedor"
-                            required>
+                           onblur="pesquisacep(this.value)" required>
                     </div>
                     <div class="col">
                         <label class="fs-5 fw-bold mp-3" for="telefone">UF do Fornecedor</label>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col">
                         <label class="fs-5 fw-bold mp-3" for="telefone">Endereço do Fornecedor</label>
-                        <input type="text" class="form-control mb-3" name="endereco" id="endereco"
+                        <input type="text" class="form-control mb-3" name="endereco" id="rua"
                             placeholder="Endereço do Fornecedor" required>
                     </div>
                     <div class="col">
@@ -88,6 +88,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="app/public/fornecedorCep.js"></script>
 </body>
 
 </html>

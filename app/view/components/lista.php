@@ -56,6 +56,7 @@ switch ($request) {
                     <th scope="col">CEP</th>
                     <th scope="col">UF</th>
                     <th scope="col">Cidade</th>
+                    <th scope="col">Endereço</th>
                     <th scope="col">Bairro</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -63,7 +64,7 @@ switch ($request) {
             <tbody>
                 <?php
                 foreach ($fornecedorController->listarAll() as $fornecedor) {
-                    require_once "modalFornecedor.php";
+                    require "modalFornecedor.php";
                     ?>
                     <tr>
                         <td>
@@ -89,6 +90,9 @@ switch ($request) {
                         </td>
                         <td>
                             <?= $fornecedor->cidade ?>
+                        </td>
+                        <td>
+                            <?= $fornecedor->endereco ?>
                         </td>
                         <td>
                             <?= $fornecedor->bairro ?>

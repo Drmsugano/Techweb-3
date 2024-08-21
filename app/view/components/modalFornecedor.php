@@ -33,7 +33,7 @@
                             placeholder="<?= $fornecedorForm->cnpj ?>" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">CEP do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="<?= $fornecedorForm->cep ?>"
-                                required>
+                            onblur="pesquisacep(this.value)" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">UF do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="uf" id="uf" placeholder="<?= $fornecedorForm->uf ?>"
                                 required>

@@ -6,7 +6,7 @@ class FornecedorDAO extends DAO
     {
         try {
             $pdo = Conexao::getConexao();
-            $pdo_sql = $pdo->prepare("INSERT INTO fornecedor ( nome, email, telefone, cnpj, inscricao_estadual, cep, uf, cidade, bairro) VALUES (:nome,:email,:telefone,:cnpj,:ie,:cep,:uf,:cidade,:bairro)");
+            $pdo_sql = $pdo->prepare("INSERT INTO fornecedor ( nome, email, telefone, cnpj, inscricao_estadual, cep, uf, cidade, endereco,bairro) VALUES (:nome,:email,:telefone,:cnpj,:ie,:cep,:uf,:cidade,:endereco,:bairro)");
             $pdo_sql->bindValue(":nome", $fornecedor->nome);
             $pdo_sql->bindValue(":email", $fornecedor->email);
             $pdo_sql->bindValue(":telefone", $fornecedor->telefone);
@@ -15,6 +15,7 @@ class FornecedorDAO extends DAO
             $pdo_sql->bindValue(":cep", $fornecedor->cep);
             $pdo_sql->bindValue(":uf", $fornecedor->uf);
             $pdo_sql->bindValue(":cidade", $fornecedor->cidade);
+            $pdo_sql->bindValue(":endereco", $fornecedor->endereco);
             $pdo_sql->bindValue(":bairro", $fornecedor->bairro);
             if ($pdo_sql->execute() === true) {
                 header('location: /cadastroFornecedor');
@@ -36,7 +37,7 @@ class FornecedorDAO extends DAO
                 throw new Exception("Não foi possível estabelecer uma conexão com o banco de dados.");
             }
 
-            $sql = "SELECT id, nome, email, telefone, cnpj, inscricao_estadual,cnpj, cep, uf, cidade, bairro FROM fornecedor WHERE id = :id";
+            $sql = "SELECT id, nome, email, telefone, cnpj, inscricao_estadual,cnpj, cep, uf, cidade, bairro,endereco FROM fornecedor WHERE id = :id";
             $result = $conexao->prepare($sql);
             $result->bindValue(":id", $fornecedor->id, PDO::PARAM_INT);
             $result->execute();
@@ -58,7 +59,7 @@ class FornecedorDAO extends DAO
                 throw new Exception("Não foi possível estabelecer uma conexão com o banco de dados.");
             }
 
-            $sql = "SELECT id, nome, email, telefone, cnpj, inscricao_estadual,cnpj, cep, uf, cidade, bairro FROM fornecedor";
+            $sql = "SELECT id, nome, email, telefone, cnpj, inscricao_estadual,cnpj, cep, uf, cidade, bairro, endereco FROM fornecedor";
             $result = $conexao->prepare($sql);
             $result->execute();
             $lista = $result->fetchAll(PDO::FETCH_BOTH);
@@ -76,7 +77,7 @@ class FornecedorDAO extends DAO
     {
         try {
             $pdo = Conexao::getConexao();
-            $pdo_sql = $pdo->prepare("UPDATE fornecedor SET nome = :nome, email = :email,  telefone = :telefone, cnpj = :cnpj, inscricao_estadual = :ie, cep = :cep, uf = :uf, cidade = :cidade, bairro = :bairro
+            $pdo_sql = $pdo->prepare("UPDATE fornecedor SET nome = :nome, email = :email,  telefone = :telefone, cnpj = :cnpj, inscricao_estadual = :ie, cep = :cep, uf = :uf, cidade = :cidade, bairro = :bairro, endereco = :endereco
 WHERE id = :id;");
             $pdo_sql->bindValue(":nome", $fornecedor->nome);
             $pdo_sql->bindValue(":email", $fornecedor->email);
@@ -87,6 +88,7 @@ WHERE id = :id;");
             $pdo_sql->bindValue(":uf", $fornecedor->uf);
             $pdo_sql->bindValue(":cidade", $fornecedor->cidade);
             $pdo_sql->bindValue(":bairro", $fornecedor->bairro);
+            $pdo_sql->bindValue(":endereco", $fornecedor->endereco);
             $pdo_sql->bindValue(":id", $fornecedor->id, PDO::PARAM_INT);
             if ($pdo_sql->execute() === true) {
                 header('location: /cadastroFornecedor');
@@ -130,6 +132,7 @@ WHERE id = :id;");
         $fornecedor->uf = $row["uf"];
         $fornecedor->cidade = $row["cidade"];
         $fornecedor->bairro = $row["bairro"];
+        $fornecedor->endereco = $row["endereco"];
         return $fornecedor;
     }
 }
