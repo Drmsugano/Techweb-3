@@ -32,7 +32,7 @@ class Funcionario {
         $funcionario->id = $id;
         return $funcionarioDAO->read($funcionario);
     }
-    public function deletar(){
+    public static function deletar(){
         $funcionarioDAO = new FuncionarioDAO();
         $funcionario = new Funcionario();
         $funcionario->id = $_REQUEST["del"];

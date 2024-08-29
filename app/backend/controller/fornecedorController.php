@@ -1,6 +1,10 @@
 <?php
 require_once "app/backend/model/Fornecedor.php";
 class FornecedorController extends Fornecedor{
+
+    public static function create(){
+        return include_once "app/view/cadastroFornecedor.php";
+    }
     public function cadastrar(){
         $fornecedor = new Fornecedor();
         $fornecedor->CadastrarFornecedor();

@@ -33,7 +33,7 @@ switch ($request) {
                         <td>
                             <i class="btn btn-warning text-white" data-bs-toggle="modal"
                                 data-bs-target="#funcionarioModal<?= $funcionario->id ?>">Editar</i>
-                            <a class="btn btn-danger" href='?del=<?= $funcionario->id ?>' class='m-1 btn btn-danger'
+                            <a class="btn btn-danger" href='/funcionario/destroy?del=<?= $funcionario->id ?>' class='m-1 btn btn-danger'
                                 onclick="return confirm ('Confirma a Exclusão')">Excluir</a>
                         </td>
                     </tr>
