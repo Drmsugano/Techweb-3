@@ -1,5 +1,4 @@
 <?php
-require_once "app/backend/model/Fornecedor.php";
 class FornecedorController extends Fornecedor{
 
     public static function create(){

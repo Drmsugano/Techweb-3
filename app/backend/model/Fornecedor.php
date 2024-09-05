@@ -1,5 +1,4 @@
 <?php
-require_once "app/backend/DAO/FornecedorDAO.php";
 class Fornecedor{
     private $nome;
     private $telefone;

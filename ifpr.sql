@@ -40,7 +40,8 @@ CREATE TABLE `fornecedor` (
   `uf` varchar(2) DEFAULT NULL,
   `cidade` varchar(50) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT current_timestamp(),
-  `bairro` varchar(100) DEFAULT NULL
+  `bairro` varchar(100) DEFAULT NULL,
+  `endereco` varchar(100) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

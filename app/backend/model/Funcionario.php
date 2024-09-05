@@ -1,5 +1,4 @@
 <?php
-require_once "app/backend/DAO/funcionarioDAO.php";
 class Funcionario {
     private $id;
     private $nome;
@@ -38,7 +37,7 @@ class Funcionario {
         $funcionario->id = $_REQUEST["del"];
         $funcionarioDAO->delete($funcionario);
     }
-    public function alterar(){
+    public static function alterar(){
         $funcionario = new Funcionario();
         $funcionarioDAO = new FuncionarioDAO();
         $funcionario->id = $_REQUEST["id"];

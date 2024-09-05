@@ -14,7 +14,7 @@
 <div class="container m-3">
     <h2>CRUD de Funcionários</h2>
     <div class="mb-3">
-    <form method="post">
+    <form action="/funcionario/form/store" method="post">
             <input type="number" id="idFuncionario" name="id" hidden>
             <label class="fs-5 fw-bold mp-3" for="nome">Nome do Funcionário</label>
             <input type="text" class="form-control mb-3" name="nome" id="nome" placeholder="Nome do Funcionario" required>

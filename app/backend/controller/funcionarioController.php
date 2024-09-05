@@ -1,11 +1,11 @@
 <?php
-require_once "app/backend/model/Funcionario.php";
 class FuncionarioController extends Funcionario{
     public static function index(){
-        return include_once 'app/view/modules/funcionario/funcionario.create.php';
+        return include 'app/view/cadastroPessoa.php';
     }
     public static function create(){
-        return include_once 'app/view/modules/funcionario/funcionario.create.php';
+        return include 'app/view/cadastroPessoa.php';
+        ;
     }
     public static function cadastrar(){
         $funcionario = new Funcionario();
@@ -23,7 +23,7 @@ class FuncionarioController extends Funcionario{
         $funcionario = new Funcionario();
         $funcionario->deletar();
     }
-    public function alterar(){
+    public static function alterar(){
         $funcionario = new Funcionario();
         $funcionario->alterar();
     }

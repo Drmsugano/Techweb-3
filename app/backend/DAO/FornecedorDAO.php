@@ -1,5 +1,4 @@
 <?php
-require_once "DAO.php";
 class FornecedorDAO extends DAO
 {
     public function create($fornecedor)

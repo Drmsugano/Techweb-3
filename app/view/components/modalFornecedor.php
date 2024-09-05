@@ -23,20 +23,20 @@
                                 placeholder="<?= $fornecedorForm->email ?>">
                             <label class="fs-5 fw-bold mp-3" for="telefone">Telefone do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="telefone" id="telefone"
-                                placeholder="Telefone do Fornecedor"  placeholder="<?= $fornecedorForm->telefone ?>"
+                                placeholder="Telefone do Fornecedor" placeholder="<?= $fornecedorForm->telefone ?>"
                                 required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">IE (Inscrição Estadual) do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="ie" id="ie"
-                            placeholder="<?= $fornecedorForm->ie ?>"required>
+                                placeholder="<?= $fornecedorForm->ie ?>" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">CNPJ do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="cnpj" id="cnpj"
-                            placeholder="<?= $fornecedorForm->cnpj ?>" required>
+                                placeholder="<?= $fornecedorForm->cnpj ?>" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">CEP do Fornecedor</label>
-                            <input type="text" class="form-control mb-3" name="cep" id="cep" placeholder="<?= $fornecedorForm->cep ?>"
-                            onblur="pesquisacep(this.value)" required>
+                            <input type="text" class="form-control mb-3" name="cep" id="cep"
+                                placeholder="<?= $fornecedorForm->cep ?>" onblur="pesquisacep(this.value)" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">UF do Fornecedor</label>
-                            <input type="text" class="form-control mb-3" name="uf" id="uf" placeholder="<?= $fornecedorForm->uf ?>"
-                                required>
+                            <input type="text" class="form-control mb-3" name="uf" id="uf"
+                                placeholder="<?= $fornecedorForm->uf ?>" required>
                             <label class="fs-5 fw-bold mp-3" for="telefone">Cidade do Fornecedor</label>
                             <input type="text" class="form-control mb-3" name="cidade" id="cidade"
                                 placeholder="<?= $fornecedorForm->cidade ?>" required>

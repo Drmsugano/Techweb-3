@@ -7,8 +7,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body m-3">
-                <?php foreach ($funcionarioController->listar($funcionario->id) as $funcionarioForm) {    ?>
-                <form method="post" enctype="multipart/form-data">
+                <?php foreach ($funcionarioController->listar($funcionario->id) as $funcionarioForm) { ?>
+                    <form action="/funcionario/update?id=<?= $funcionario->id ?>" method="post"
+                        enctype="multipart/form-data">
                         <div class="container">
                             <div class="d-flex">
                                 <label class="fs-6 fw-bold me-2" for="id">ID do Funcionario: </label>
@@ -34,7 +35,7 @@
                         </div>
                     </form>
                     <?php
-                    } ?>
+                } ?>
             </div>
         </div>
     </div>
