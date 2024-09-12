@@ -30,7 +30,7 @@ USE `ifpr`;
 --
 
 CREATE TABLE `fornecedor` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `telefone` varchar(14) DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE `fornecedor` (
 --
 
 CREATE TABLE `funcionario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `senha` varchar(45) DEFAULT NULL,

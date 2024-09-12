@@ -1,4 +1,7 @@
 <?php
+namespace app\backend\model\DAO;
+use \PDOException;
+use \PDO;
 abstract class DAO{
     abstract public function create($object);
     abstract public function read($id);

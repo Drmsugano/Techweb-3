@@ -1,3 +1,3 @@
 <?php
-require_once ('app/autoload.php');
-require_once("app/routes/web.php");
+require_once ('autoload.php');
+require_once("routes/web.php");

@@ -1,4 +1,6 @@
 <?php
+namespace app\backend\model\entity;
+namespace app\backend\model\DAO\FuncionarioDAO;
 class Funcionario {
     private $id;
     private $nome;

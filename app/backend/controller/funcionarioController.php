@@ -1,5 +1,8 @@
 <?php
-class FuncionarioController extends Funcionario{
+namespace app\backend\controller;
+use app\backend\model\entity\Funcionario;
+
+class FuncionarioController{
     public static function index(){
         return include 'app/view/cadastroPessoa.php';
     }

@@ -1,4 +1,7 @@
 <?php
+namespace app\backend\model\DAO;
+use \PDOException;
+use \PDO;
 class FuncionarioDAO extends DAO
 {
     public function create($funcionario)

@@ -1,4 +1,5 @@
 <?php
+namespace app\backend\model\entity;
 class Fornecedor{
     private $nome;
     private $telefone;

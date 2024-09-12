@@ -1,5 +1,6 @@
 <?php
-class FornecedorController extends Fornecedor{
+namespace app\backend\controller;
+class FornecedorController{
 
     public static function create(){
         return include_once "app/view/cadastroFornecedor.php";

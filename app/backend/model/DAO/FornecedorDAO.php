@@ -1,4 +1,7 @@
 <?php
+namespace app\backend\model\DAO;
+use \PDOException;
+use \PDO;
 class FornecedorDAO extends DAO
 {
     public function create($fornecedor)

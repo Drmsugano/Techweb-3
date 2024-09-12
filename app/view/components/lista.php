@@ -1,6 +1,4 @@
 <?php
-$funcionarioController = new FuncionarioController();
-$fornecedorController = new FornecedorController();
 $request = parse_url($_SERVER["REQUEST_URI"],PHP_URL_PATH);
 switch ($request) {
     case "/cadastroFuncionario":

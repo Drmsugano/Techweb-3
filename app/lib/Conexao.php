@@ -1,4 +1,5 @@
 <?php
+namespace app\backend\lib;
 class Conexao
 {
     private static $conexao;
