@@ -1,6 +1,6 @@
 <div class="sidebar close">
     <div class="logo-details">
-        <i><a href="/Home"><img src="/img/Caixa.png" width="48px" height="48px" style="filter:invert(100%)"></a></i>
+        <i><a href="/Home"><img src="/img/caixa.png" width="48px" height="48px" style="filter:invert(100%)"></a></i>
         <span class="logo_name"><i>Techweb-3</i></span>
     </div>
     <ul class="nav-links">
@@ -25,19 +25,29 @@
                 </li>
                 <li>
                     <div class="iocn-link">
+                        <a href="/Equipe">Equipe</a>
+                        <i class='bx bxs-chevron-down arrow-sub'></i>
+                    </div>
+                    <ul class="sub-sub-menu">
+                        <li><a href='/Equipe/create'>Cadastrar</a></li>
+                        <li><a href="/Produto">Listar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="iocn-link">
                         <a href="/Vendedor">Vendedor</a>
                         <i class='bx bxs-chevron-down arrow-sub'></i>
                     </div>
                     <ul class="sub-sub-menu">
-                        <li><a href='#'>Cadastrar</a></li>
-                        <li><a href="#">Listar</a></li>
+                        <li><a href='/Vendedor/create'>Cadastrar</a></li>
+                        <li><a href="/Vendedor">Listar</a></li>
                     </ul>
                 </li>
             </ul>
         </li>
         <div class="profile-details">
             <div class="profile-content">
-                <img src="/img/ifpr.jfif" alt="profileImg">
+                <img src="/img/ifpr.png" alt="profileImg">
             </div>
             <div class="name-job">
                 <div class='profile_name'> <?= $_SESSION['usuario_logado']["nome"] ?> </div>

@@ -10,7 +10,7 @@ use \PDO;
 //require_once('DAO.class.php');
 //require_once('model/Funcionario.class.php');
 
-class UsuarioDAO extends DAO
+class UsuarioDAO extends Dao
 {
     public function __construct() {
         parent::__construct();

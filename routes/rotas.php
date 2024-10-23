@@ -1,5 +1,6 @@
 <?php
 
+use app\controller\EquipeController;
 use app\controller\HomeController;
 use app\controller\LoginController;
 use app\controller\ProdutoController;
@@ -18,15 +19,28 @@ switch ($url) {
     case "/logout":
         LoginController::sair();
         break;
-case "/Produto":
-    ProdutoController::listar();
-    break;
-case "/Produto/create":
-    ProdutoController::form();
-    break;
-case "/Produto/form/store":
-    ProdutoController::create();
-    break;
+    //Rotas de Produto
+    case "/Produto":
+        ProdutoController::listar();
+        break;
+    case "/Produto/create":
+        ProdutoController::form();
+        break;
+    case "/Produto/form/store":
+        ProdutoController::create();
+        break;
+    case "/Produto/update":
+        ProdutoController::edit();
+        break;
+    case "/Produto/destroy":
+        ProdutoController::delete();
+        break;
+    case "/Equipe":
+        EquipeController::listar();
+        break;
+    case "/Hello":
+        phpinfo();
+        break;
     case "/autenticar":
         LoginController::autenticar();
         break;

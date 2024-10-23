@@ -4,7 +4,7 @@ use app\model\entity\Vendedor;
 use \PDOExcetion; 
 use \PDO;
 
-class VendedorDAO extends DAO {
+class VendedorDAO extends Dao {
 
     public function __construct() {
         parent::__construct();

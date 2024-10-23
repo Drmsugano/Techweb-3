@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-use app\model\dao\UsuarioDAO;
+use app\model\dao\UsuarioDao;
 use app\model\entity\Usuario;
 
 /**
@@ -20,7 +20,7 @@ class LoginController extends Controller{
         $usuario = $_POST["usuario"];
         $senha = $_POST["senha"];
 
-        $usuarioDAO = new UsuarioDAO();
+        $usuarioDAO = new UsuarioDao();
 
         $usuario_autenticado = $usuarioDAO->readUserByUserAndPass($usuario, $senha);
 

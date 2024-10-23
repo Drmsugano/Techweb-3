@@ -4,7 +4,7 @@ use app\model\entity\Equipe;
 use \PDOExcetion; 
 use \PDO;
 
-class EquipeDao extends DAO{
+class EquipeDao extends Dao{
     public function __construct() {
         parent::__construct();
     }
@@ -24,15 +24,12 @@ class EquipeDao extends DAO{
     public function read_all() {
         try {
             $pdo = $this->conexao->get_pdo();
-            $pdo_sql = $pdo->prepare("SELECT id, nome FROM equipe;");
+            $pdo_sql = $pdo->prepare("SELECT * FROM equipe;");
             $pdo_sql->execute();
             $array_retorno = $pdo_sql->fetchAll();
-            $equipes = [];
-            foreach ($array_retorno as $array_eqp) {
-                $equipe = new Equipe();
-                $equipe->id = $array_eqp['id'];
-                $equipe->nome = $array_eqp['nome'];
-                $equipes[] = $equipe;
+            $equipes = array();
+            foreach ($array_retorno as $lista) {
+                $equipes[] = $this->listaEquipe($lista);
             }
             return $equipes;            
         } catch (PDOException $ex) {
@@ -43,16 +40,15 @@ class EquipeDao extends DAO{
     public function read($id) {
         try {
             $pdo = $this->conexao->get_pdo();
-            $pdo_sql = $pdo->prepare("SELECT id, nome, inicio, fim FROM equipe WHERE id=:id;");
-            $pdo_sql->bindParam(":id", $id, PDO::PARAM_INT);
+            $pdo_sql = $pdo->prepare("SELECT * FROM equipe WHERE id= :id;");
+            $pdo_sql->bindParam(":id",$id, PDO::PARAM_INT);
             $pdo_sql->execute();
-            $array_eqp = $pdo_sql->fetch();
-            $equipe = new Equipe();
-            $equipe->id = $array_eqp['id'];
-            $equipe->nome = $array_eqp['nome'];
-            $equipe->inicio = new \DateTime($array_eqp['inicio']);
-            $equipe->fim = new \DateTime($array_eqp['fim']);
-            return $equipe;           
+            $retorno = $pdo_sql->fetchAll();
+            $equipeForm = array();
+            foreach ($retorno as $lista) {
+                $equipeForm[] = $this->listaEquipe($lista);
+            }
+            return $equipeForm;           
         } catch (PDOException $ex) {
             return 'error '. $ex->getMessage();
         }
@@ -81,6 +77,16 @@ class EquipeDao extends DAO{
         } catch (PDOException $ex) {
             return 'error '. $ex->getMessage();
         }
+    }
+
+    public function listaEquipe($row)
+    {
+        $equipe = new Equipe();
+        $equipe->id = $row["id"];
+        $equipe->nome = $row["nome"];
+        $equipe->inicio = $row["inicio"];
+        $equipe->fim = $row["fim"];
+        return $equipe;
     }
 
 }
