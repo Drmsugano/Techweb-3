@@ -24,8 +24,7 @@ class ProdutoController extends Controller{
               if ($dao->create($produto)){
                 header("Location: /Produto");
             } else {
-                // Isso não funciona pensar em uma maneira de apresentar a mensagem
-                echo '<script type="text/javascript">alert("Erro em cadastrar");</script>'; // Se der erro imprime na tela um script
+                echo '<script type="text/javascript">alert("Erro em cadastrar");</script>'; 
             }
         }
     }
@@ -41,8 +40,7 @@ class ProdutoController extends Controller{
             if ($dao->update($produto)){
                 header("Location: /Produto");
             } else {
-                // Isso não funciona pensar em uma maneira de apresentar a mensagem
-                echo '<script type="text/javascript">alert("Erro em Alterar");</script>'; // Se der erro imprime na tela um script
+                echo '<script type="text/javascript">alert("Erro em Alterar");</script>';
             }
         }
     }
@@ -54,8 +52,7 @@ class ProdutoController extends Controller{
             if ($dao->delete($produto)){
                 header("Location: /Produto");
             } else {
-                // Isso não funciona pensar em uma maneira de apresentar a mensagem
-                echo '<script type="text/javascript">alert("Erro em Alterar");</script>'; // Se der erro imprime na tela um script
+                echo '<script type="text/javascript">alert("Erro em Deletar");</script>';
             }
         }
     }

@@ -35,8 +35,15 @@ switch ($url) {
     case "/Produto/destroy":
         ProdutoController::delete();
         break;
+    //Rotas para Equipe
     case "/Equipe":
         EquipeController::listar();
+        break;
+    case "/Equipe/create":
+        EquipeController::form();
+        break;
+    case "/Equipe/form/store":
+        EquipeController::create();
         break;
     case "/Hello":
         phpinfo();

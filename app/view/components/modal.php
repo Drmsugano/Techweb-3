@@ -72,10 +72,17 @@ switch ($url) {
                                     <br>
                                     <label class="fs-6 fw-bold" for="nome">Nome da Equipe</label>
                                     <input type="text" class="form-control mb-3" name="nome" placeholder="<?= $equipes->nome ?>">
-                                    <label class="fs-6 fw-bold" for="nome">Data de Inicio da Produto</label>
-                                    <input type="date" class="form-control mb-3" name="inicio" value="<?= $equipes->inicio ?>">
-                                    <label class="fs-6 fw-bold" for="nome">Data do Término da Equipe</label>
-                                    <input type="date" class="form-control mb-3" name="termino" value="<?= $equipes->fim ?>">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="fs-5 fw-bold mp-3" for="inicio">Inicio da Equipe</label>
+                                            <input type="date" class="form-control mb-3" name="inicio" id="inicio" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="fs-5 fw-bold mp-3" for="fim">Fim da Equipe</label>
+                                            <input type="date" class="form-control mb-3" name="fim" id="fim" required
+                                                onchange="validateDates()">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="m-3">
                                     <div class="d-flex justify-content-between">

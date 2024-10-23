@@ -62,5 +62,15 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="/js/sidebar.js"></script>
+    <script>
+        function validateDates() {
+            const inicio = document.getElementById('inicio').value;
+            const fim = document.getElementById('fim').value;
+            if (inicio && fim && new Date(fim) < new Date(inicio)) {
+                alert("A data de fim não pode ser anterior à data de início.");
+                document.getElementById('fim').value = ""; 
+            }
+        }
+    </script>
 </body>
 </html>

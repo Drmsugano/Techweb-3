@@ -12,9 +12,9 @@ class EquipeDao extends Dao{
         try {
             $pdo = $this->conexao->get_pdo();
             $pdo_sql = $pdo->prepare("INSERT INTO equipe (nome, inicio, fim) VALUES (:nome, :inicio, :fim);");
-            $pdo_sql->bindParam(":nome", $equipe->nome, PDO::PARAM_STR);
-            $pdo_sql->bindParam(":inicio", $equipe->inicio->format('Y-m-d H:i:s'), PDO::PARAM_STR);
-            $pdo_sql->bindParam(":fim", $equipe->fim->format('Y-m-d'), PDO::PARAM_STR);
+            $pdo_sql->bindValue(":nome", $equipe->nome);
+            $pdo_sql->bindValue(":inicio", $equipe->inicio);
+            $pdo_sql->bindValue(":fim", $equipe->fim);
             return $pdo_sql->execute();
         } catch (PDOException $ex) {
             return 'error '. $ex->getMessage();
