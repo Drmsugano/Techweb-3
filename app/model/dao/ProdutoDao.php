@@ -1,29 +1,96 @@
 <?php
 namespace app\model\dao;
 use app\model\entity\Produto;
-use \PDOExcetion; 
+use \PDOExcetion;
 use \PDO;
 
 class ProdutoDao extends DAO{
-    public function create($produto)
-    {
-
+    public function __construct() {
+        parent::__construct();
     }
-    public function read($id)
-    {
-
+    public function create($produto) {
+        try {
+            $pdo = $this->conexao->get_pdo();
+            $pdo_sql = $pdo->prepare("INSERT INTO produto (descricao, tipo, quantidade, categoria) VALUES (:descricao, :tipo, :quantidade, :categoria);");
+            $pdo_sql->bindValue(":descricao", $produto->descricao);
+            $pdo_sql->bindValue(":tipo", $produto->tipo);
+            $pdo_sql->bindValue(":quantidade", $produto->quantidade);
+            $pdo_sql->bindValue(":categoria", $produto->categoria);
+            return $pdo_sql->execute();
+        } catch (PDOException $ex) {
+            return 'error '. $ex->getMessage();
+        }
     }
-    public function read_all()
-    {
 
+    public function read_all() {
+        try {
+            $pdo = $this->conexao->get_pdo();
+            $pdo_sql = $pdo->prepare("SELECT * FROM produto;");
+            $pdo_sql->execute();
+            $array_retorno = $pdo_sql->fetchAll();
+            $produtos = [];
+            foreach ($array_retorno as $array_prod) {
+                $produtos[] = $this->listaProduto($array_prod);
+            }
+            return $produtos;
+        } catch (PDOException $ex) {
+            return 'error '. $ex->getMessage();
+        }
     }
-    public function update($produto)
-    {
 
+    public function read($id) {
+        try {
+            $pdo = $this->conexao->get_pdo();
+            $pdo_sql = $pdo->prepare("SELECT * FROM produto WHERE id=:id;");
+            $pdo_sql->bindParam(":id", $id, PDO::PARAM_INT);
+            $pdo_sql->execute();
+            $array_prod = $pdo_sql->fetch();
+            $produto = new Produto();
+            $produto->id = $array_prod['id'];
+            $produto->descricao = $array_prod['descricao'];
+            $produto->tipo = $array_prod['tipo'];
+            $produto->quantidade = $array_prod['quantidade'];
+            $produto->categoria = $array_prod['categoria'];
+            return $produto;
+        } catch (PDOException $ex) {
+            return 'error '. $ex->getMessage();
+        }
     }
-    public function delete($id)
-    {
 
+    public function update($produto) {
+        try {
+            $pdo = $this->conexao->get_pdo();
+            $pdo_sql = $pdo->prepare("UPDATE produto SET descricao=:descricao, tipo=:tipo, quantidade=:quantidade, categoria=:categoria WHERE id=:id;");
+            $pdo_sql->bindValue(":id", $produto->id);
+            $pdo_sql->bindParam(":descricao", $produto->descricao, PDO::PARAM_STR);
+            $pdo_sql->bindParam(":tipo", $produto->tipo, PDO::PARAM_STR);
+            $pdo_sql->bindParam(":quantidade", $produto->quantidade, PDO::PARAM_INT);
+            $pdo_sql->bindParam(":categoria", $produto->categoria, PDO::PARAM_STR);
+            return $pdo_sql->execute();
+        } catch (PDOException $ex) {
+            return 'error '. $ex->getMessage();
+        }
+    }
+
+    public function delete($id) {
+        try {
+            $pdo = $this->conexao->get_pdo();
+            $pdo_sql = $pdo->prepare("DELETE FROM produto WHERE id=:id;");
+            $pdo_sql->bindParam(":id", $id, PDO::PARAM_INT);
+            return $pdo_sql->execute();
+        } catch (PDOException $ex) {
+            return 'error '. $ex->getMessage();
+        }
+    }
+    public function listaProduto($row)
+    {
+        $produto = new Produto();
+        $produto->id = $row["id"];
+        $produto->descricao = $row["descricao"];
+        $produto->tipo = $row["tipo"];
+        $produto->quantidade = $row["quantidade"];
+        $produto->categoria = $row["categoria"];
+        return $produto;
     }
 
 }

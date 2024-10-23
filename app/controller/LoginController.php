@@ -37,8 +37,7 @@ class LoginController extends Controller{
     public static function sair() {
         
         unset($_SESSION['usuario_logado']);
-
-        header("Location: /login");
+        header("Location: /Login");
     }
 }
 
