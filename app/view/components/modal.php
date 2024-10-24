@@ -13,7 +13,7 @@ switch ($url) {
                     <div class="modal-body m-3">
                         <?php
                         foreach ($produto->read($produtos->id) as $produtos) { ?>
-                            <form action="/Produto/update?id=<?= $produtos->id ?>" method="post" enctype="multipart/form-data">
+                            <form action="/Produto/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
                                         <label class="fs-6 fw-bold me-2" for="id">ID do Produto: </label>
@@ -62,7 +62,7 @@ switch ($url) {
                     <div class="modal-body m-3">
                         <?php
                         foreach ($equipe->read($equipes->id) as $equipes) { ?>
-                            <form action="/Equipe/update?id=<?= $equipes->id ?>" method="post" enctype="multipart/form-data">
+                            <form action="/Equipe/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
                                         <label class="fs-6 fw-bold me-2" for="id">ID da Equipe: </label>

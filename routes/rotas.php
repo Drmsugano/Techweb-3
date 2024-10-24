@@ -4,6 +4,8 @@ use app\controller\EquipeController;
 use app\controller\HomeController;
 use app\controller\LoginController;
 use app\controller\ProdutoController;
+use app\controller\VendedorController;
+use app\model\entity\Vendedor;
 $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 
 switch ($url) {
@@ -44,6 +46,21 @@ switch ($url) {
         break;
     case "/Equipe/form/store":
         EquipeController::create();
+        break;
+    case "/Equipe/update":
+        EquipeController::edit();
+        break;
+    case "/Equipe/destroy":
+        EquipeController::delete();
+        break;
+    case "/Vendedor":
+        VendedorController::listar();
+        break;
+    case "/Vendedor/create":
+        VendedorController::form();
+        break;
+    case "/Vendedor/form/store":
+        VendedorController::create();
         break;
     case "/Hello":
         phpinfo();

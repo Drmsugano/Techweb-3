@@ -60,8 +60,8 @@ class EquipeDao extends Dao{
             $pdo_sql = $pdo->prepare("UPDATE equipe SET nome=:nome, inicio=:inicio, fim=:fim WHERE id=:id;");
             $pdo_sql->bindValue(":id", $equipe->id);
             $pdo_sql->bindParam(":nome", $equipe->nome, PDO::PARAM_STR);
-            $pdo_sql->bindParam(":inicio", $equipe->inicio->format('Y-m-d H:i:s'), PDO::PARAM_STR);
-            $pdo_sql->bindParam(":fim", $equipe->fim->format('Y-m-d'), PDO::PARAM_STR);
+            $pdo_sql->bindParam(":inicio", $equipe->inicio);
+            $pdo_sql->bindParam(":fim", $equipe->fim);
             return $pdo_sql->execute();
         } catch (PDOException $ex) {
             return 'error '. $ex->getMessage();

@@ -4,7 +4,7 @@ use app\model\entity\Vendedor;
 use \PDOExcetion; 
 use \PDO;
 
-class VendedorDAO extends Dao {
+class VendedorDao extends Dao {
 
     public function __construct() {
         parent::__construct();
@@ -26,16 +26,16 @@ class VendedorDAO extends Dao {
     public function read_all() {
         try {
             $pdo = $this->conexao->get_pdo();
-            $pdo_sql = $pdo->prepare("SELECT id, nome, nivel, equipe_id FROM vendedor;");
+            $pdo_sql = $pdo->prepare("SELECT vd.id, vd.nome, vd.nivel, e.nome AS equipe FROM vendedor vd INNER JOIN EQUIPE ON e.id = vd.estilo_id;");
             $pdo_sql->execute();
             $array_retorno = $pdo_sql->fetchAll();
             $vendedores = [];
-            foreach ($array_retorno as $array_vnd) {
+            foreach ($array_retorno as $lista) {
                 $vendedor = new Vendedor();
-                $vendedor->id = $array_vnd['id'];
-                $vendedor->nome = $array_vnd['nome'];
-                $vendedor->nivel = $array_vnd['nivel'];
-                $vendedor->equipe_id = $array_vnd['equipe_id'];
+                $vendedor->id = $lista['id'];
+                $vendedor->nome = $lista['nome'];
+                $vendedor->nivel = $lista['nivel'];
+                $vendedor->equipe = $lista['equipe'];
                 $vendedores[] = $vendedor;
             }
             return $vendedores;

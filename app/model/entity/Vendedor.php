@@ -4,7 +4,7 @@ class Vendedor {
     private $id;
     private $nome;
     private $nivel;
-    private $equipe_id;
+    private $equipe;
 
     function __set($atributo, $valor) {
         $this->$atributo = $valor;
