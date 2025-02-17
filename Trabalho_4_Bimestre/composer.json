@@ -1,0 +1,21 @@
+{
+    "name": "drmsugano/trabalho_4_bimestre",
+    "autoload": {
+        "psr-4": {
+            "Model\\": "app/model/",
+            "Controller\\": "app/controller/",
+            "Dao\\": "app/model/dao/",
+            "Lib\\": "app/lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Douglas Sugano",
+            "email": "50459465+Drmsugano@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^3.3",
+        "symfony/cache": "^6.0"
+    }
+}
