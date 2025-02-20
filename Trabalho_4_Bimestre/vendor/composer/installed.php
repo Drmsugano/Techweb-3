@@ -3,7 +3,7 @@
         'name' => 'drmsugano/trabalho_4_bimestre',
         'pretty_version' => 'dev-4Bimestre',
         'version' => 'dev-4Bimestre',
-        'reference' => '3c5c8d053f120e2e505dacf3f71c019ef6db94c6',
+        'reference' => '83d9dffcbfe8a8a5445e83a35db562a746f5cb18',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -94,7 +94,7 @@
         'drmsugano/trabalho_4_bimestre' => array(
             'pretty_version' => 'dev-4Bimestre',
             'version' => 'dev-4Bimestre',
-            'reference' => '3c5c8d053f120e2e505dacf3f71c019ef6db94c6',
+            'reference' => '83d9dffcbfe8a8a5445e83a35db562a746f5cb18',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

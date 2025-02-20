@@ -39,10 +39,6 @@ class ComposerStaticInit28b158bd1f34d5862dc7f6c3fdfb61d8
         array (
             'Model\\' => 6,
         ),
-        'L' => 
-        array (
-            'Lib\\' => 4,
-        ),
         'D' => 
         array (
             'Doctrine\\Persistence\\' => 21,
@@ -118,10 +114,6 @@ class ComposerStaticInit28b158bd1f34d5862dc7f6c3fdfb61d8
         'Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/model',
-        ),
-        'Lib\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/lib',
         ),
         'Doctrine\\Persistence\\' => 
         array (

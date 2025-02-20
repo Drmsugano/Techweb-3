@@ -8,7 +8,7 @@
             <div class="iocn-link">
                 <a href="#">
                     <i class='bx bxs-store'></i>
-                    <span class="link_name">Trabalho 2-Bimestre</span>
+                    <span class="link_name">Trabalho 4-Bimestre</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>

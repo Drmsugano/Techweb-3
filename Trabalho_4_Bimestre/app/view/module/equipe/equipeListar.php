@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,14 +36,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($equipe->read_all() as $equipes) {
+                                <?php foreach ($equipe->read_all($entityManager) as $equipes) {
                                     include("../app/view/components/modal.php");
                                 ?>
                                     <tr>
                                         <th scope="row"><?= $equipes->id ?></th>
                                         <td><?= $equipes->nome ?></td>
-                                        <td><?= $equipes->inicio->format('d/m/Y') ?></td>
-                                        <td><?= $equipes->fim->format('d/m/Y') ?></td>
+                                        <td><?= date_format($equipes->inicio,'d/m/Y') ?></td>
+                                        <td><?= date_format($equipes->fim,'d/m/Y') ?></td>
                                         <td>
                                             <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#equipeModal<?= $equipes->id ?>">Editar</button>
                                             <a class="btn btn-danger" href='/Equipe/destroy?id=<?= $equipes->id ?>' onclick="return confirm('Confirma a Exclusão?')">Excluir</a>

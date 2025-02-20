@@ -37,7 +37,7 @@ class EquipeController extends Controller
         $dao = new EquipeDao();
         if (isset($_POST["alterarEquipe"])) {
             $equipe = new Equipe();
-            $equipe->id = $_POST["id"];
+            $equipe->id = (int) $_POST["id"];
             $equipe->nome = $_POST["nome"];
             $equipe->inicio = $_POST["inicio"];
             $equipe->fim = $_POST["fim"];
@@ -53,7 +53,7 @@ class EquipeController extends Controller
         $dao = new EquipeDao();
         if (isset($_REQUEST['id'])) {
             $equipe = new Equipe();
-            $equipe->id = $_REQUEST['id'];
+            $equipe->id = (int) $_REQUEST['id'];
             if ($dao->delete($entityManager,$equipe->id)) {
                 header("Location: /Equipe");
             } else {

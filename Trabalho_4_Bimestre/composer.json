@@ -4,8 +4,7 @@
         "psr-4": {
             "Model\\": "app/model/",
             "Controller\\": "app/controller/",
-            "Dao\\": "app/model/dao/",
-            "Lib\\": "app/lib/"
+            "Dao\\": "app/model/dao/"
         }
     },
     "authors": [

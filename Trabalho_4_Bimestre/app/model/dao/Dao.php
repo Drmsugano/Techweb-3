@@ -2,7 +2,6 @@
 
 namespace Dao;
 
-use app\lib\Conexao;
 use Doctrine\ORM\EntityManager;
 
 
