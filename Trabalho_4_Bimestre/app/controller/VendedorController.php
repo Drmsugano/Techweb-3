@@ -29,7 +29,7 @@ class VendedorController extends Controller
             $vendedor = new Vendedor;
             $vendedor->nome = $_POST["nome"];
             $vendedor->nivel = $_POST["nivel"];
-            $vendedor->equipe = $_POST["equipe"];
+            $vendedor->equipe = (int) $_POST["equipe"];
             if ($daoVendedor->create($entityManager,$vendedor)) {
                 header("location: /Vendedor");
             } else {

@@ -38,13 +38,13 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($vendedor->read_all($entityManager) as $vendedores) {
-                                    include("../app/view/components/modal.php");
+                                    //include("../app/view/components/modal.php");
                                 ?>
                                     <tr>
                                         <td><?= $vendedores->id ?></th>
                                         <td><?= $vendedores->nome ?></td>
                                         <td><?= $vendedores->nivel ?></td>
-                                        <td><?= $vendedores->equipe ?></td>
+                                        <td><?= $vendedores->equipe->nome ?></td>
                                         <td>
                                             <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#vendedoresModal<?= $vendedores->id ?>">Editar</button>
                                             <a class="btn btn-danger" href='/Vendedor/destroy?id=<?= $vendedores->id ?>' onclick="return confirm('Confirma a Exclusão?')">Excluir</a>
