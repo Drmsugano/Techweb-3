@@ -46,7 +46,7 @@ class VendedorController extends Controller
             $vendedor->id = $_POST["id"];
             $vendedor->nome = $_POST["nome"];
             $vendedor->nivel = $_POST["nivel"];
-            $vendedor->equipe = $_POST["equipe"];
+            $vendedor->equipe = (int) $_POST["equipe"];
             if ($daoVendedor->update($entityManager,$vendedor)) {
                 header("location: /Vendedor");
             } else {
@@ -61,7 +61,7 @@ class VendedorController extends Controller
         if (isset($_REQUEST['id'])) {
             $vendedor = new Vendedor();
             $vendedor->id = $_REQUEST['id'];
-            if ($dao->delete($entityManager,$vendedor->id)) {
+            if ($dao->delete($entityManager,$vendedor)) {
                 header("Location: /Vendedor");
             } else {
                 echo '<script type="text/javascript">alert("Erro em Deletar");</script>';

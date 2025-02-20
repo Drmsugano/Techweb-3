@@ -2,6 +2,7 @@
 namespace Model;
 
 
+use Doctrine\DBAL\Driver\Mysqli\Initializer\Options;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -23,16 +24,15 @@ class Venda
     #[Id]
     #[Column(type: "integer"), GeneratedValue]
     private $id;
-    #[Column(type: "decimal",precision: 10, scale: 2)]
+    #[Column(type: "decimal", precision: 10, scale: 2)]
     private $valor;
-    #[Column(type: "date")]
+    #[Column(type: "datetime", options: ['default' => 'CURRENT_TIMESTAMP'])]
     private $data;
-    #[ManyToOne(targetEntity: Produto::class, cascade: ['persist', 'remove'], fetch: 'EAGER')]
+    #[ManyToOne(targetEntity: Produto::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: "produto_id", referencedColumnName: 'id')]
     private $produto;
-    #[Column(type: "string")]
-    private $endereco;
-    #[ManyToOne(targetEntity: Vendedor::class, cascade: ['persist', 'remove'], fetch: 'EAGER')]
+
+    #[ManyToOne(targetEntity: Vendedor::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: "vendedor_id", referencedColumnName: 'id')]
     private $vendedor;
 

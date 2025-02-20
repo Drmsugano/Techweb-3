@@ -12,7 +12,7 @@ switch ($url) {
                     </div>
                     <div class="modal-body m-3">
                         <?php
-                        foreach ($produto->read($entityManager,$produtos->id) as $produtos) { ?>
+                        foreach ($produto->read($entityManager, $produtos->id) as $produtos) { ?>
                             <form action="/Produto/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
@@ -61,7 +61,7 @@ switch ($url) {
                     </div>
                     <div class="modal-body m-3">
                         <?php
-                        foreach ($equipe->read($entityManager,$equipes->id) as $equipes) { ?>
+                        foreach ($equipe->read($entityManager, $equipes->id) as $equipes) { ?>
                             <form action="/Equipe/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
@@ -106,12 +106,12 @@ switch ($url) {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Alteração de Equipes</h1>
+                        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Alteração de Vendedores</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body m-3">
                         <?php
-                        foreach ($vendedor->read($entityManager,$vendedores->id) as $vendedor_read) { ?>
+                        foreach ($vendedor->read($entityManager, $vendedores->id) as $vendedor_read) { ?>
                             <form action="/Vendedor/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
@@ -132,11 +132,8 @@ switch ($url) {
                                         <div class="col">
                                             <label class="fs-5 fw-bold mp-3">Equipe</label>
                                             <select class="form-control" name="equipe">
-                                                <?php
-                                                foreach ($equipe->read($vendedor_read->equipe) as $equipes) {
-                                                    ?>
-                                                    <option value="<?= $equipes->id ?>" selected><?= $equipes->nome ?></option>
-                                                <?php } ?>
+                                                <option value="<?= $vendedor_read->equipe->id ?>" selected>
+                                                    <?= $vendedor_read->equipe->nome ?> -- Atual</option>
                                                 <?php foreach ($equipe->read_all($entityManager) as $equipes) { ?>
                                                     <option value="<?= $equipes->id ?>"><?= $equipes->nome ?></option>
                                                 <?php } ?>
@@ -147,7 +144,7 @@ switch ($url) {
                                 <div class="m-3">
                                     <div class="d-flex justify-content-between">
                                         <button type="submit" class="btn btn-primary" name="alterarVendedor">
-                                            Alterar Equipe
+                                            Alterar Vendedor
                                         </button>
                                     </div>
                                 </div>
@@ -171,7 +168,7 @@ switch ($url) {
                     </div>
                     <div class="modal-body m-3">
                         <?php
-                        foreach ($venda->read($entityManager,$vendas->id) as $vendas_read) { ?>
+                        foreach ($venda->read($entityManager, $vendas->id) as $vendas_read) { ?>
                             <form action="/Venda/update" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     <div class="d-flex">
@@ -181,17 +178,13 @@ switch ($url) {
                                     </div>
                                     <br>
                                     <label class="fs-5 fw-bold mp-3" for="nome">Valor da Venda</label>
-                                    <input type="text" class="form-control mb-3" name="valor" id="nome" value="<?= $vendas_read->valor ?>" required>
+                                    <input type="text" class="form-control mb-3" name="valor" id="nome"
+                                        value="<?= $vendas_read->valor ?>" required>
                                     <div class="row">
                                         <div class="col">
                                             <label class="fs-5 fw-bold mp-3">Produtos</label>
                                             <select class="form-control" name="produto">
-                                                <?php
-                                                foreach ($produto->read($entityManager,$vendas_read->produto) as $produtos) {
-                                                    ?>
-                                                    <option value="<?= $produtos->id ?>" selected><?= $produtos->descricao ?></option>
-                                                <?php } ?>
-                                                <?php foreach ($produto->read_all() as $produtos) { ?>
+                                                <?php foreach ($produto->read_all($entityManager) as $produtos) { ?>
                                                     <option value="<?= $produtos->id ?>"><?= $produtos->descricao ?></option>
                                                 <?php } ?>
                                             </select>
@@ -199,12 +192,7 @@ switch ($url) {
                                         <div class="col">
                                             <label class="fs-5 fw-bold mp-3">Vendedores</label>
                                             <select class="form-control" name="vendedor">
-                                                <?php
-                                                foreach ($vendedor->read($entityManager,$vendas_read->vendedor) as $vendedores) {
-                                                    ?>
-                                                    <option value="<?= $vendedores->id ?>" selected><?= $vendedores->nome ?></option>
-                                                <?php } ?>
-                                                <?php foreach ($vendedor->read_all() as $vendedores) { ?>
+                                                <?php foreach ($vendedor->read_all($entityManager) as $vendedores) { ?>
                                                     <option value="<?= $vendedores->id ?>"><?= $vendedores->nome ?></option>
                                                 <?php } ?>
                                             </select>

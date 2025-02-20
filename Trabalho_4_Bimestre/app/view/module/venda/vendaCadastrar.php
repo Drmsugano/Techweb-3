@@ -35,7 +35,7 @@
                                 <div class="col">
                                     <label class="fs-5 fw-bold mp-3">Produtos</label>
                                     <select class="form-control" name="produto">
-                                        <?php foreach ($produto->read_all() as $produtos) { ?>
+                                        <?php foreach ($produto->read_all($entityManager) as $produtos) { ?>
                                             <option value="<?= $produtos->id ?>"><?= $produtos->descricao ?></option>
                                         <?php } ?>
                                     </select>
@@ -43,7 +43,7 @@
                                 <div class="col">
                                     <label class="fs-5 fw-bold mp-3">Vendedores</label>
                                     <select class="form-control" name="vendedor">
-                                        <?php foreach ($vendedor->read_all() as $vendedores) { ?>
+                                        <?php foreach ($vendedor->read_all($entityManager) as $vendedores) { ?>
                                             <option value="<?= $vendedores->id ?>"><?= $vendedores->nome ?></option>
                                         <?php } ?>
                                     </select>

@@ -43,10 +43,10 @@
                                 ?>
                                     <tr>
                                         <td><?= $vendas->id ?></th>
-                                        <td><?= $vendas->produto ?></td>
-                                        <td><?= $vendas->vendedor ?></td>
-                                        <td><?= $vendas->valor ?></td>
-                                        <td><?= date("d/m/Y H:i:s",strtotime($vendas->data)) ?></td>
+                                        <td><?= $vendas->produto->descricao ?></td>
+                                        <td><?= $vendas->vendedor->nome ?></td>
+                                        <td>R$<?= $vendas->valor ?></td>
+                                        <td><?= date_format($vendas->data,"d/m/Y H:i:s") ?></td>
                                         <td>
                                             <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#vendasModal<?= $vendas->id ?>">Editar</button>
                                             <a class="btn btn-danger" href='/Venda/destroy?id=<?= $vendas->id ?>' onclick="return confirm('Confirma a Exclusão?')">Excluir</a>

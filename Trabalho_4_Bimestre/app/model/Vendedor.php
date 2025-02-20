@@ -24,7 +24,7 @@ class Vendedor
     private $nome;
     #[Column(type: 'string')]
     private $nivel;
-    #[ManyToOne(targetEntity: Equipe::class, cascade: ['persist', 'remove'], fetch: 'EAGER')]
+    #[ManyToOne(targetEntity: Equipe::class, cascade: ['persist'], fetch: 'EAGER')]
     #[JoinColumn(name: "equipe_id", referencedColumnName: 'id')]
     private $equipe;
     #[OneToMany(targetEntity: Venda::class, mappedBy: "vendedor")]

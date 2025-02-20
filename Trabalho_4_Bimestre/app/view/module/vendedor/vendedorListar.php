@@ -38,7 +38,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($vendedor->read_all($entityManager) as $vendedores) {
-                                    //include("../app/view/components/modal.php");
+                                    include("../app/view/components/modal.php");
                                 ?>
                                     <tr>
                                         <td><?= $vendedores->id ?></th>

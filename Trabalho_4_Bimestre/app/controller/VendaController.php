@@ -27,8 +27,9 @@ class VendaController extends Controller
         if (isset($_POST["cadastrarVenda"])) {
             $venda = new Venda();
             $venda->valor = $_POST["valor"];
-            $venda->produto = $_POST["produto"];
-            $venda->vendedor = $_POST["vendedor"];
+            $venda->produto = (int) $_POST["produto"];
+            $venda->vendedor = (int) $_POST["vendedor"];
+            $venda->data = new \DateTime('now', new \DateTimeZone('America/Sao_Paulo'));
             if ($dao->create($entityManager,$venda)){
                 header("Location: /Venda");
             } else {
