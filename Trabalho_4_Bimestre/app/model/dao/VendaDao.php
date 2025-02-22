@@ -38,18 +38,19 @@ class VendaDao extends Dao
         $query = $entityManager->createQuery('SELECT v FROM Model\Venda v JOIN v.vendedor vd JOIN v.produto p WHERE v.id = :id');
         $query->setParameter('id', $venda);
         $vendaR = $query->getResult();
-        var_dump($vendaR);
         return $vendaR;
     }
 
     public function update(EntityManager $entityManager,$vendaAlt)
     {
         $daoProduto = new ProdutoDao();
+        $daoVendedor = new VendedorDao();
+        $vendedor = $daoVendedor->read($entityManager, $vendaAlt->vendedor);
         $produto = $daoProduto->read($entityManager, $vendaAlt->produto);
         $venda = $entityManager->find('Model\\Venda', $vendaAlt->id);
-        $vendedor->nome = $vendedorAlt->nome;
-        $vendedor->nivel = $vendedorAlt->nivel;
-        $vendedor->equipe = $equipe[0];
+        $venda->produto = $produto[0];
+        $venda->vendedor = $vendedor[0];
+        $venda->valor = $vendaAlt->valor;
         try {
             $entityManager->flush();
             return true;
